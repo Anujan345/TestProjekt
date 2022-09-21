@@ -24,6 +24,7 @@ public class Laegemiddel {
         return navn;
     }
 
+
     public double getEnhedPrKgPrDoegnLet() {
         return enhedPrKgPrDoegnLet;
     }

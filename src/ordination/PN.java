@@ -10,11 +10,15 @@ public class PN  extends Ordination{
     private int givetdosis = 0;
     private ArrayList<LocalDate> datoer = new ArrayList<>();
 
-    public PN(LocalDate startDen, LocalDate slutDen, Patient patient,double antalEnheder) {
-        super(startDen, slutDen, patient);
+    public PN(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,double antalEnheder) {
+        super(startDen, slutDen, patient, laegemiddel);
         this.antalEnheder = antalEnheder;
     }
 
+    @Override
+    public Laegemiddel getLaegemiddel() {
+        return super.getLaegemiddel();
+    }
 
     /**
      * Registrerer at der er givet en dosis paa dagen givesDen
