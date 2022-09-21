@@ -16,13 +16,13 @@ public class DagligFast extends Ordination{
     private Dosis createDosis(LocalTime tid, double antal){
         Dosis dosis = new Dosis(tid,antal);
         if(tid == (LocalTime.of(6,00))){
-        Array.set(dagligDosis, 0, dosis);
+        dagligDosis[0] = dosis;
         }else if (tid ==LocalTime.of(12,00)){
-            Array.set(dagligDosis, 1, dosis);
+            dagligDosis[1] = dosis;
         }else if (tid ==LocalTime.of(18,00)){
-            Array.set(dagligDosis, 2, dosis);
-        }else if (tid ==LocalTime.of(24,00)){
-            Array.set(dagligDosis, 3, dosis);
+            dagligDosis[2] = dosis;
+        }else if (tid ==LocalTime.of(23,00)){
+            dagligDosis[3] = dosis;
         }
         return dosis;
 
@@ -40,7 +40,7 @@ public class DagligFast extends Ordination{
     }
 
     public Dosis nat(double antal){
-        return createDosis(LocalTime.of(24,00),antal);
+        return createDosis(LocalTime.of(23,00),antal);
     }
 
     @Override
@@ -51,6 +51,10 @@ public class DagligFast extends Ordination{
             samletdosis += d.getAntal();
         }
         return samletdosis * dage;
+    }
+
+    public Dosis[] getDagligDosis() {
+        return dagligDosis;
     }
 
     @Override
