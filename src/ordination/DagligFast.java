@@ -8,9 +8,10 @@ import java.time.temporal.ChronoUnit;
 public class DagligFast extends Ordination{
     private Dosis[] dagligDosis = new Dosis[4];
 
-    public DagligFast(LocalDate startDen, LocalDate slutDen) {
-        super(startDen, slutDen);
+    public DagligFast(LocalDate startDen, LocalDate slutDen, Patient patient) {
+        super(startDen, slutDen, patient);
     }
+
 
     private Dosis createDosis(LocalTime tid, double antal){
         Dosis dosis = new Dosis(tid,antal);
