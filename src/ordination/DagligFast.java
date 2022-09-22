@@ -12,16 +12,16 @@ public class DagligFast extends Ordination{
         super(startDen, slutDen, patient, laegemiddel);
     }
 
-
+    //Husk at få begrænset antal
     private Dosis createDosis(LocalTime tid, double antal){
         Dosis dosis = new Dosis(tid,antal);
-        if(tid == (LocalTime.of(6,00))){
+        if(tid == (LocalTime.of(6,0))){
         dagligDosis[0] = dosis;
-        }else if (tid ==LocalTime.of(12,00)){
+        }else if (tid ==LocalTime.of(12,0)){
             dagligDosis[1] = dosis;
-        }else if (tid ==LocalTime.of(18,00)){
+        }else if (tid ==LocalTime.of(18,0)){
             dagligDosis[2] = dosis;
-        }else if (tid ==LocalTime.of(23,00)){
+        }else if (tid ==LocalTime.of(23,0)){
             dagligDosis[3] = dosis;
         }
         return dosis;
