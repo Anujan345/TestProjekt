@@ -21,11 +21,7 @@ public class DagligSkaev extends Ordination {
 
     public void opretDosis(LocalTime[] tid, double[] antal) {
         for (int i = 0; i < tid.length-1; i++) {
-            for (int j = 0; j < antal.length-1; j++) {
-                doses.add(new Dosis(tid[i],antal[j]));
-                i++;
-                j++;
-            }
+            doses.add(new Dosis(tid[i],antal[i]));
         }
     }
 

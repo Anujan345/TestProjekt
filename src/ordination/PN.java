@@ -38,6 +38,16 @@ public class PN  extends Ordination{
 
     public double doegnDosis() {
         double døgndosis;
+        LocalDate start = null;
+        LocalDate slut = null;
+        for (LocalDate d : datoer){
+            if (start.isBefore(d) || start == null){
+                start = d;
+            }
+            if (slut.isAfter(d) || slut == null){
+                slut = d;
+            }
+        }
         døgndosis = (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(getStartDen(), getSlutDen())+1;
         return døgndosis;
     }

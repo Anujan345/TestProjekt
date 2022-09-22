@@ -85,7 +85,7 @@ public class Controller {
 	 * Pre: ordination og dato er ikke null
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-		if (!ordination.givDosis(dato)){
+		if (!dato.isBefore(ordination.getSlutDen())&& !dato.isAfter(ordination.getStartDen())){
 			throw new IllegalArgumentException("Den er udenfor ordinationsdatoerne");
 		}
 	}
