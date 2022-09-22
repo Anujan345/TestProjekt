@@ -42,7 +42,7 @@ public class DagligFast extends Ordination{
 
     @Override
     public double samletDosis() {
-        int dage = (int) ChronoUnit.DAYS.between(getStartDen(), getSlutDen());
+        int dage = (int) ChronoUnit.DAYS.between(getStartDen(), getSlutDen())+1;
         double samletdosis = 0;
         for (Dosis d : dagligDosis){
             samletdosis += d.getAntal();
