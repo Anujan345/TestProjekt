@@ -129,7 +129,7 @@ class DagligFastTest {
 
 
     @Test
-    void TC1_setPatient_notNull() {
+    void TC2_setPatient_notNull() {
 
         //Arrange
         DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 22),patient,null);

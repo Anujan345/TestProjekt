@@ -47,21 +47,52 @@ Laegemiddel laegemiddel;
 
     @Test
     void doegnDosis() {
+        //Arrange
+        PN pn = new PN(LocalDate.of(2002, 10, 10),
+                LocalDate.of(2002, 10, 12),patient,laegemiddel,20);
+
+        //Act
+        pn.givDosis(LocalDate.of(2002,10,10));
+        pn.givDosis(LocalDate.of(2002, 10, 11));
+        pn.givDosis(LocalDate.of(2002, 10, 12));
+
+
+        //Assert
+        assertEquals(20, pn.doegnDosis());
     }
 
-    @Test
-    void getType() {
-    }
+
 
     @Test
     void samletDosis() {
+        //Arrange
+        PN pn = new PN(LocalDate.of(2002, 10, 10),
+                LocalDate.of(2002, 10, 12),patient,laegemiddel,20);
+
+        //Act
+        pn.givDosis(LocalDate.of(2002,10,10));
+        pn.givDosis(LocalDate.of(2002, 10, 11));
+        pn.givDosis(LocalDate.of(2002, 10, 12));
+
+
+        //Assert
+        assertEquals(60, pn.samletDosis());
     }
 
     @Test
     void getAntalGangeGivet() {
+        //Arrange
+        PN pn = new PN(LocalDate.of(2002, 10, 10),
+                LocalDate.of(2002, 10, 12),patient,laegemiddel,20);
+
+        //Act
+        pn.givDosis(LocalDate.of(2002,10,10));
+        pn.givDosis(LocalDate.of(2002, 10, 11));
+        pn.givDosis(LocalDate.of(2002, 10, 12));
+
+        //Assert
+        assertEquals(3, pn.getAntalGangeGivet());
+
     }
 
-    @Test
-    void getAntalEnheder() {
-    }
 }
