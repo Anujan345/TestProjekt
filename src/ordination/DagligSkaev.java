@@ -20,7 +20,7 @@ public class DagligSkaev extends Ordination {
     }
 
     public void opretDosis(LocalTime[] tid, double[] antal) {
-        for (int i = 0; i < tid.length-1; i++) {
+        for (int i = 0; i < tid.length; i++) {
             doses.add(new Dosis(tid[i],antal[i]));
         }
     }
@@ -41,7 +41,7 @@ public class DagligSkaev extends Ordination {
 
     @Override
     public double doegnDosis() {
-        double sum =0;
+        double sum = 0;
         for (Dosis d : doses){
             sum += d.getAntal();
         }
