@@ -49,7 +49,7 @@ public class PN  extends Ordination{
             }
         }
         if (start != null && slut != null)
-        døgndosis = (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(start, slut)+1;
+        døgndosis = (datoer.size()*antalEnheder)/ (ChronoUnit.DAYS.between(slut, start)+1);
         return døgndosis;
     }
     @Override
