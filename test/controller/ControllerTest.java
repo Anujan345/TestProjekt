@@ -17,14 +17,14 @@ Laegemiddel laegemiddel;
 
 
     @Test
-    void TC1_Opret_Dagligfast() {
+    void TC1_opretPnOrdination_minus1_Dag() {
         //Arrange
         patient = new Patient("111111","Anujan",112);
         laegemiddel = new Laegemiddel("LSD",5,10,15,"enhed");
         controller = Controller.getController();
 
         //Act && Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> controller.opretPNOrdination(LocalDate.of(2022,9,22),LocalDate.of(2021, 9, 22),
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> controller.opretPNOrdination(LocalDate.of(2022,9,22),LocalDate.of(2022, 9, 21),
                 patient,laegemiddel,20));
         String expected = "Den er udenfor ordinationsdatoerne";
 
@@ -34,7 +34,7 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void TC2_Opret_Dagligfast() {
+    void TC2_opretPNOrdination_plus1_dag() {
         //Arrange
         patient = new Patient("111111","Anujan",112);
         laegemiddel = new Laegemiddel("LSD",5,10,15,"enhed");
@@ -52,7 +52,7 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void TC3_Opret_Dagligfast() {
+    void TC3_opretPnOrdination_laegemiddel_null() {
         //Arrange
         patient = new Patient("111111","Anujan",112);
         laegemiddel = new Laegemiddel("LSD",5,10,15,"enhed");
@@ -67,7 +67,7 @@ Laegemiddel laegemiddel;
 
     }
     @Test
-    void TC1_opretDagligFastOrdination() {
+    void TC1_opretDagligFastOrdination_minus1_dag() {
         //Arrange
         patient = new Patient("111111","Anujan",20);
         laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
@@ -75,7 +75,7 @@ Laegemiddel laegemiddel;
 
         //Act
         Exception exception = assertThrows(IllegalArgumentException.class, () -> controller.opretDagligFastOrdination(LocalDate.of(2022, 9, 22),
-                LocalDate.of(2021, 9, 22),patient,laegemiddel,2, 3, 4, 5));
+                LocalDate.of(2022, 9, 21),patient,laegemiddel,1, 1, 1, 1));
         String expected = "Den er udenfor ordinationsdatoerne";
 
         //Assert
@@ -83,7 +83,7 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void TC2_opretDagligFastOrdination() {
+    void TC2_opretDagligFastOrdination_plus1_dag() {
         //Arrange
         patient = new Patient("111111","Anujan",20);
         laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
@@ -98,7 +98,7 @@ Laegemiddel laegemiddel;
         assertEquals(expected,actual);
     }
     @Test
-    void TC3_opretDagligFastOrdination() {
+    void TC3_opretDagligFastOrdination_plus3_dage() {
         //Arrange
         patient = new Patient("111111","Anujan",20);
         laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
@@ -114,7 +114,7 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void TC1_opretDagligSkaevOrdination() {
+    void TC1_opretDagligSkaevOrdination_minus1_dag() {
         //Arrange
         patient = new Patient("111111","Anujan",20);
         laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
@@ -140,7 +140,7 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void TC2_opretDagligSkaevOrdination() {
+    void TC2_opretDagligSkaevOrdination_plus1_dag() {
         //Arrange
         patient = new Patient("111111","Anujan",20);
         laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
@@ -160,24 +160,9 @@ Laegemiddel laegemiddel;
         //Assert
         assertEquals(expected,actual);
     }
-    @Test
-    void TC2_ordinationPNAnvendt() {
-        //Arrange
-        patient = new Patient("111111","Anujan",20);
-        laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
-        controller = Controller.getController();
-        PN pn = controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
-                LocalDate.of(2022, 9, 25),patient,laegemiddel,20);
-        //Act
-        Exception exception = assertThrows(IllegalArgumentException.class, ()
-                -> controller.ordinationPNAnvendt(pn, LocalDate.of(2022,9,21)));
-        String expected = "Den er udenfor ordinationsdatoerne";
-        //Assert
-        assertEquals(expected,exception.getMessage());
 
-    }
     @Test
-    void TC1_ordinationPNAnvendt() {
+    void TC1_ordinationPNAnvendt_input_26_09_22() {
         //Arrange
         patient = new Patient("111111","Anujan",20);
         laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
@@ -187,6 +172,23 @@ Laegemiddel laegemiddel;
         //Act
         Exception exception = assertThrows(IllegalArgumentException.class, ()
                 -> controller.ordinationPNAnvendt(pn, LocalDate.of(2022,9,26)));
+        String expected = "Den er udenfor ordinationsdatoerne";
+        //Assert
+        assertEquals(expected,exception.getMessage());
+
+    }
+
+    @Test
+    void TC2_ordinationPNAnvendt_input_21_09_22() {
+        //Arrange
+        patient = new Patient("111111","Anujan",20);
+        laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
+        controller = Controller.getController();
+        PN pn = controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 25),patient,laegemiddel,20);
+        //Act
+        Exception exception = assertThrows(IllegalArgumentException.class, ()
+                -> controller.ordinationPNAnvendt(pn, LocalDate.of(2022,9,21)));
         String expected = "Den er udenfor ordinationsdatoerne";
         //Assert
         assertEquals(expected,exception.getMessage());
