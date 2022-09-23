@@ -115,6 +115,51 @@ class DagligFastTest {
         assertEquals(expected, actual);
     }
 
+    @org.junit.jupiter.api.Test
+    void TC1_døgndosis_1_start_22_09_22_slut_22_09_22() {
+        //Arrange
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 22),patient,null);
+        Dosis morgen = dagligFast.morgen(3);
+        Dosis middag = dagligFast.middag(3);
+        Dosis aften = dagligFast.aften(3);
+        Dosis nat = dagligFast.nat(3);
+        double actual = dagligFast.doegnDosis();
+        double expected = 12;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    void TC2_døgndosis_2_start_22_09_22_slut_22_09_24() {
+        //Arrange
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 24),patient,null);
+        Dosis morgen = dagligFast.morgen(3);
+        Dosis middag = dagligFast.middag(3);
+        Dosis aften = dagligFast.aften(3);
+        Dosis nat = dagligFast.nat(10);
+        double actual = dagligFast.doegnDosis();
+        double expected = 19;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    void TC3_døgndosis_3_start_22_09_22_slut_22_09_27() {
+        //Arrange
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 27),patient,null);
+        Dosis morgen = dagligFast.morgen(3);
+        Dosis middag = dagligFast.middag(4);
+        Dosis aften = dagligFast.aften(5);
+        Dosis nat = dagligFast.nat(6);
+        double actual = dagligFast.doegnDosis();
+        double expected = 18;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+
     @Test
     void TC1_setPatient_Null(){
         //Arrange
