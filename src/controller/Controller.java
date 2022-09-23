@@ -89,7 +89,14 @@ public class Controller {
 			LocalTime[] klokkeSlet, double[] antalEnheder) {
 		DagligSkaev dagligSkaev = new DagligSkaev(startDen,slutDen,patient,laegemiddel);
 		dagligSkaev.opretDosis(klokkeSlet, antalEnheder);
-		return dagligSkaev;
+		if (!startDen.isBefore(slutDen)){
+			throw new IllegalArgumentException("Den er udenfor ordinationsdatoerne");
+		}
+		else if (patient == null || laegemiddel == null){
+			throw new NullPointerException("sæt patient og laegemiddel");
+		} else {
+			return dagligSkaev;
+		}
 	}
 
 	/**

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import storage.Storage;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -113,22 +114,52 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void opretDagligSkaevOrdination() {
+    void TC1_opretDagligSkaevOrdination() {
         //Arrange
         patient = new Patient("111111","Anujan",20);
         laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
         controller = Controller.getController();
-
+        LocalTime[] tid = new LocalTime[4];
+        double[] antal = new double[4];
+        tid[0] = LocalTime.of(10, 30);
+        antal[0] = 2;
+        tid[1] = LocalTime.of(13, 40);
+        antal[1] = 3;
+        tid[2] = LocalTime.of(15, 0);
+        antal[2] = 5;
+        tid[3] = LocalTime.of(17, 0);
+        antal[3] = 7;
 
         //Act
-        DagligSkaev actual = controller.opretDagligSkaevOrdination(LocalDate.of(2002, 10, 10),
-                LocalDate.of(2002, 10, 20),patient,laegemiddel,null , null);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> controller.opretDagligSkaevOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2021, 9, 22),patient,laegemiddel,tid,antal));
+        String expected = "Den er udenfor ordinationsdatoerne";
+
+        //Assert
+        assertEquals(expected,exception.getMessage());
+    }
+
+    @Test
+    void TC2_opretDagligSkaevOrdination() {
+        //Arrange
+        patient = new Patient("111111","Anujan",20);
+        laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
+        controller = Controller.getController();
+        LocalTime[] tid = new LocalTime[2];
+        double[] antal = new double[2];
+        tid[0] = LocalTime.of(12, 00);
+        antal[0] = 2;
+        tid[1] = LocalTime.of(18, 00);
+        antal[1] = 2;
+
+        //Act
+        DagligSkaev actual = controller.opretDagligSkaevOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 23),patient,laegemiddel,tid,antal);
         Ordination expected = patient.getOrdinations().get(0);
 
         //Assert
-        assertEquals(expected,actual );
+        assertEquals(expected,actual);
     }
-
     @Test
     void ordinationPNAnvendt() {
     }
