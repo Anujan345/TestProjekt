@@ -196,17 +196,78 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void anbefaletDosisPrDoegn() {
+    void T1_anbefaletDosisPrDoegn() {
         //Arrange
         laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
         controller = Controller.getController();
+        patient = new Patient("111111","Anujan",20);
 
         //Act
-        patient = new Patient("111111","Anujan",20);
+        double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+        double expected = 2;
+
         //Assert
+        assertEquals(expected, actual);
 
     }
+    @Test
+    void T2_anbefaletDosisPrDoegn() {
+        //Arrange
+        laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
+        controller = Controller.getController();
+        patient = new Patient("111111","Anujan",25);
 
+        //Act
+        double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+        double expected = 5;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void T3_anbefaletDosisPrDoegn() {
+        //Arrange
+        laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
+        controller = Controller.getController();
+        patient = new Patient("111111","Anujan",26);
+
+        //Act
+        double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+        double expected = 5.2;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void T4_anbefaletDosisPrDoegn() {
+        //Arrange
+        laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
+        controller = Controller.getController();
+        patient = new Patient("111111","Anujan",120);
+
+        //Act
+        double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+        double expected = 24;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+    @Test
+    void T5_anbefaletDosisPrDoegn() {
+        //Arrange
+        laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
+        controller = Controller.getController();
+        patient = new Patient("111111","Anujan",121);
+
+        //Act
+        double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+        double expected = 36.3;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
     @Test
     void antalOrdinationerPrVægtPrLægemiddel() {
     }
