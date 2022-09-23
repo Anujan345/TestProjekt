@@ -37,17 +37,18 @@ public class PN  extends Ordination{
     }
 
     public double doegnDosis() {
-        double døgndosis;
-        LocalDate start = datoer.get(0);
-        LocalDate slut = datoer.get(0);
+        double døgndosis = 0.0;
+        LocalDate start = null;
+        LocalDate slut = LocalDate.of(2999, 12, 30);
         for (LocalDate d : datoer){
-            if (start.isBefore(d) || start == null){
+            if (start == null || start.isBefore(d)){
                 start = d;
             }
-            if (slut.isAfter(d) || slut == null){
+            if (slut == null || slut.isAfter(d)){
                 slut = d;
             }
         }
+        if (start != null && slut != null)
         døgndosis = (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(start, slut)+1;
         return døgndosis;
     }

@@ -12,9 +12,6 @@ public class DagligFast extends Ordination{
         super(startDen, slutDen, patient, laegemiddel);
     }
 
-
-
-
     public Dosis morgen(double antal){
         Dosis dosis = new Dosis(LocalTime.of(6, 0),antal);
         dagligDosis[0] = dosis;
@@ -37,8 +34,6 @@ public class DagligFast extends Ordination{
         dagligDosis[3] = dosis;
         return dosis;
     }
-
-
 
     @Override
     public double samletDosis() {
