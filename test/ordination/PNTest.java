@@ -5,14 +5,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PNTest {
+class   PNTest {
 
     @BeforeEach
     void setUp() {
+    Patient patient = new Patient("11111111","Anujan",120);
     }
 
     @Test
     void getLaegemiddel() {
+        PN pn = new PN()
     }
 
     @Test

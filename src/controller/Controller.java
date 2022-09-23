@@ -90,6 +90,9 @@ public class Controller {
 		if (!dato.isBefore(slutdato) || !dato.isAfter(startdate)){
 			throw new IllegalArgumentException("Den er udenfor ordinationsdatoerne");
 		}
+		else{
+			ordination.givDosis(dato);
+		}
 	}
 
 	/**

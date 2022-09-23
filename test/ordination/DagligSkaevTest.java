@@ -28,7 +28,7 @@ class DagligSkaevTest {
     }
 
     @Test
-    void void TC1_samletantal1_start_22_09_22_slut_24_09_22_samletDosis() {
+    void TC1_samletantal1_start_22_09_22_slut_24_09_22_samletDosis() {
             //Arrange
             DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 22),patient,null);
             Dosis morgen = dagligFast.morgen(3);
