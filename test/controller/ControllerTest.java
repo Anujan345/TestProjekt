@@ -215,11 +215,11 @@ Laegemiddel laegemiddel;
         //Arrange
         laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
         controller = Controller.getController();
-        patient = new Patient("111111","Anujan",25);
+        patient = new Patient("111111","Anujan",24);
 
         //Act
         double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
-        double expected = 5;
+        double expected = 2.4;
 
         //Assert
         assertEquals(expected, actual);
@@ -230,11 +230,11 @@ Laegemiddel laegemiddel;
         //Arrange
         laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
         controller = Controller.getController();
-        patient = new Patient("111111","Anujan",26);
+        patient = new Patient("111111","Anujan",25);
 
         //Act
         double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
-        double expected = 5.2;
+        double expected = 5;
 
         //Assert
         assertEquals(expected, actual);
