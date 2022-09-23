@@ -18,7 +18,7 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void getLaegemiddel() {
+    void TC1_getLaegemiddel_1_start_10_10_22_slut_12_10_22() {
         //Arrange
         PN pn = new PN(LocalDate.of(2002, 10, 10),
                 LocalDate.of(2002, 10, 12),patient,laegemiddel,20);
@@ -31,7 +31,7 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void doegnDosis() {
+    void TC1_doegnDosis_1_start_10_10_22_slut_12_10_22() {
         //Arrange
         PN pn = new PN(LocalDate.of(2002, 10, 10),
                 LocalDate.of(2002, 10, 12),patient,laegemiddel,20);
@@ -49,7 +49,7 @@ Laegemiddel laegemiddel;
 
 
     @Test
-    void samletDosis() {
+    void TC1_samletDosis_1_start_10_10_22_slut_12_10_22() {
         //Arrange
         PN pn = new PN(LocalDate.of(2002, 10, 10),
                 LocalDate.of(2002, 10, 12),patient,laegemiddel,20);
@@ -65,7 +65,7 @@ Laegemiddel laegemiddel;
     }
 
     @Test
-    void getAntalGangeGivet() {
+    void TC1_getAntalGangeGivet_1_start_10_10_22_slut_12_10_22() {
         //Arrange
         PN pn = new PN(LocalDate.of(2002, 10, 10),
                 LocalDate.of(2002, 10, 12),patient,laegemiddel,20);
