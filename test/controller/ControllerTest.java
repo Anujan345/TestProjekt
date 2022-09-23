@@ -269,6 +269,55 @@ Laegemiddel laegemiddel;
         assertEquals(expected, actual);
     }
     @Test
-    void antalOrdinationerPrVægtPrLægemiddel() {
+    void TC1_antalOrdinationerPrVægtPrLægemiddel() {
+        //Arrange
+        laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
+        controller = Controller.getController();
+        patient = controller.opretPatient("111111","Anujan",121);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 25),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 26),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 27),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 28),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 29),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 30),patient,laegemiddel,20);
+
+        //Act
+        double actual = controller.antalOrdinationerPrVægtPrLægemiddel(110,130,laegemiddel);
+        double expected = 6;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+    @Test
+    void TC2_antalOrdinationerPrVægtPrLægemiddel() {
+        //Arrange
+        laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
+        controller = Controller.getController();
+        patient = controller.opretPatient("111111","Anujan",121);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 25),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 26),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 27),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 28),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 29),patient,laegemiddel,20);
+        controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 30),patient,laegemiddel,20);
+
+        //Act
+        double actual = controller.antalOrdinationerPrVægtPrLægemiddel(0,10,laegemiddel);
+        double expected = 0;
+
+        //Assert
+        assertEquals(expected, actual);
     }
 }
