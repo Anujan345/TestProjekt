@@ -127,14 +127,20 @@ class DagligFastTest {
         assertEquals(null, dagligFast.getPatient());
     }
 
+
     @Test
-    void TC2_setPatient_Patient(){
+    void TC1_setPatient_notNull() {
+
         //Arrange
         DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 22),patient,null);
+        Patient patient1 = new Patient("1111111","Hans Kim", 90);
 
         //Act
-            dagligFast.setPatient(patient);
-        //Arrange
-        assertEquals(patient, dagligFast.getPatient());
+        dagligFast.setPatient(patient1);
+
+        Patient expected = patient1;
+
+        //Assert
+        assertEquals(expected,dagligFast.getPatient());
     }
 }
