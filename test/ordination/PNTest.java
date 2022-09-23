@@ -29,21 +29,6 @@ Laegemiddel laegemiddel;
         //Assert
         assertEquals(expected,actual);
     }
-    @Test
-    void givDosis() {
-        //Arrange
-        PN pn = new PN(LocalDate.of(2002, 10, 10),
-                LocalDate.of(2002, 10, 12),patient,laegemiddel,20);
-
-        //Act
-        pn.givDosis(LocalDate.of(2002,10,10));
-        pn.givDosis(LocalDate.of(2002, 10, 11));
-        pn.givDosis(LocalDate.of(2002, 10, 12));
-
-        //Assert
-        assertEquals(3, pn.getAntalGangeGivet());
-
-    }
 
     @Test
     void doegnDosis() {
@@ -92,7 +77,6 @@ Laegemiddel laegemiddel;
 
         //Assert
         assertEquals(3, pn.getAntalGangeGivet());
-
     }
 
 }
