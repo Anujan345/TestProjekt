@@ -38,8 +38,8 @@ public class PN  extends Ordination{
 
     public double doegnDosis() {
         double døgndosis;
-        LocalDate start = null;
-        LocalDate slut = null;
+        LocalDate start = datoer.get(0);
+        LocalDate slut = datoer.get(0);
         for (LocalDate d : datoer){
             if (start.isBefore(d) || start == null){
                 start = d;
@@ -48,10 +48,9 @@ public class PN  extends Ordination{
                 slut = d;
             }
         }
-        døgndosis = (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(getStartDen(), getSlutDen())+1;
+        døgndosis = (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(start, slut)+1;
         return døgndosis;
     }
-
     @Override
     public String getType() {
         return "PN";

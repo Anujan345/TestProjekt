@@ -100,11 +100,11 @@ public class Controller {
 		double antal = 0;
 		if (patient != null && laegemiddel != null){
 			if(patient.getVaegt() < 25){
-				antal = laegemiddel.getEnhedPrKgPrDoegnLet();
+				antal = laegemiddel.getEnhedPrKgPrDoegnLet()* patient.getVaegt();
 			}else if (patient.getVaegt() > 120){
-				antal = laegemiddel.getEnhedPrKgPrDoegnTung();
+				antal = laegemiddel.getEnhedPrKgPrDoegnTung()* patient.getVaegt();
 			}else {
-				antal = laegemiddel.getEnhedPrKgPrDoegnNormal();
+				antal = laegemiddel.getEnhedPrKgPrDoegnNormal()* patient.getVaegt();
 			}
 		}
 		return antal;
