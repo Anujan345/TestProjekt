@@ -85,7 +85,9 @@ public class Controller {
 	 * Pre: ordination og dato er ikke null
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-		if (!dato.isBefore(ordination.getSlutDen())&& !dato.isAfter(ordination.getStartDen())){
+		LocalDate startdate = ordination.getStartDen().minusDays(1);
+		LocalDate slutdato = ordination.getSlutDen().plusDays(1);
+		if (!dato.isBefore(slutdato) || !dato.isAfter(startdate)){
 			throw new IllegalArgumentException("Den er udenfor ordinationsdatoerne");
 		}
 	}
