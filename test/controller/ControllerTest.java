@@ -161,7 +161,36 @@ Laegemiddel laegemiddel;
         assertEquals(expected,actual);
     }
     @Test
-    void ordinationPNAnvendt() {
+    void TC2_ordinationPNAnvendt() {
+        //Arrange
+        patient = new Patient("111111","Anujan",20);
+        laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
+        controller = Controller.getController();
+        PN pn = controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 25),patient,laegemiddel,20);
+        //Act
+        Exception exception = assertThrows(IllegalArgumentException.class, ()
+                -> controller.ordinationPNAnvendt(pn, LocalDate.of(2022,9,21)));
+        String expected = "Den er udenfor ordinationsdatoerne";
+        //Assert
+        assertEquals(expected,exception.getMessage());
+
+    }
+    @Test
+    void TC1_ordinationPNAnvendt() {
+        //Arrange
+        patient = new Patient("111111","Anujan",20);
+        laegemiddel = new Laegemiddel("asd",10,20,30,"sa");
+        controller = Controller.getController();
+        PN pn = controller.opretPNOrdination(LocalDate.of(2022, 9, 22),
+                LocalDate.of(2022, 9, 25),patient,laegemiddel,20);
+        //Act
+        Exception exception = assertThrows(IllegalArgumentException.class, ()
+                -> controller.ordinationPNAnvendt(pn, LocalDate.of(2022,9,26)));
+        String expected = "Den er udenfor ordinationsdatoerne";
+        //Assert
+        assertEquals(expected,exception.getMessage());
+
     }
 
     @Test
