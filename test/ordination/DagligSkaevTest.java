@@ -28,8 +28,7 @@ class DagligSkaevTest {
     }
 
     @Test
-    void samletDosis() {
-        void TC1_samletantal3_start_22_09_22_slut_24_09_22_samletDosis() {
+    void void TC1_samletantal1_start_22_09_22_slut_24_09_22_samletDosis() {
             //Arrange
             DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 22),patient,null);
             Dosis morgen = dagligFast.morgen(3);
@@ -41,12 +40,10 @@ class DagligSkaevTest {
 
             //Assert
             assertEquals(expected, actual);
-        }
     }
 
     @Test
-    void doegnDosis() {
-        void TC1_samletantal3_start_22_09_22_slut_24_09_22_samletDosis() {
+    void TC1_samletantal1_start_22_09_22_slut_24_09_22_døgndosis(){
             //Arrange
             DagligSkaev dagligSkaev = new DagligSkaev(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 22),patient,null);
 
@@ -55,7 +52,6 @@ class DagligSkaevTest {
 
             //Assert
             assertEquals(expected, actual);
-        }
     }
 
     @Test
