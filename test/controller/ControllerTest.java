@@ -197,6 +197,14 @@ Laegemiddel laegemiddel;
 
     @Test
     void anbefaletDosisPrDoegn() {
+        //Arrange
+        laegemiddel = new Laegemiddel("asd",0.1,0.2,0.3,"sa");
+        controller = Controller.getController();
+
+        //Act
+        patient = new Patient("111111","Anujan",20);
+        //Assert
+
     }
 
     @Test
