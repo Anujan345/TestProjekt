@@ -13,5 +13,6 @@ class OrdinationTest {
 
     @Test
     void setPatient() {
+
     }
 }

@@ -82,6 +82,7 @@ class DagligFastTest {
 
         //Assert
         assertEquals(expected, actual);
+
     }
 
     @org.junit.jupiter.api.Test
@@ -112,5 +113,28 @@ class DagligFastTest {
 
         //Assert
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void TC1_setPatient_Null(){
+        //Arrange
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 22),patient,null);
+
+        //Act
+        dagligFast.setPatient(null);
+
+        //Arrange
+        assertEquals(null, dagligFast.getPatient());
+    }
+
+    @Test
+    void TC2_setPatient_Patient(){
+        //Arrange
+        DagligFast dagligFast = new DagligFast(LocalDate.of(2022, 9, 22),LocalDate.of(2022, 9, 22),patient,null);
+
+        //Act
+            dagligFast.setPatient(patient);
+        //Arrange
+        assertEquals(patient, dagligFast.getPatient());
     }
 }
