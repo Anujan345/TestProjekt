@@ -41,7 +41,14 @@ public class Controller {
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
 			Patient patient, Laegemiddel laegemiddel, double antal) {
 		PN pn = new PN(startDen, slutDen, patient, laegemiddel,antal);
-		return pn;
+		if (!startDen.isBefore(slutDen)){
+			throw new IllegalArgumentException("Den er udenfor ordinationsdatoerne");
+		}
+		else if (patient == null || laegemiddel == null){
+			throw new NullPointerException("sæt patient og laegemiddel");
+		} else {
+			return pn;
+		}
 	}
 
 	/**
@@ -59,7 +66,14 @@ public class Controller {
 		dagligFast.middag(middagAntal);
 		dagligFast.aften(aftenAntal);
 		dagligFast.nat(natAntal);
-		return dagligFast;
+		if (!startDen.isBefore(slutDen)){
+			throw new IllegalArgumentException("Den er udenfor ordinationsdatoerne");
+		}
+		else if (patient == null || laegemiddel == null){
+			throw new NullPointerException("sæt patient og laegemiddel");
+		} else {
+			return dagligFast;
+		}
 	}
 
 	/**
